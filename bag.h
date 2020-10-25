@@ -2,7 +2,7 @@
 This is a simple bag that currently only supports adding.
 */
 #include <stdlib.h>
-#include <stdio.h>//TODO remove
+
 typedef struct ChildBag
 {
     struct ChildBag* next;
@@ -15,6 +15,14 @@ typedef struct Bag
     struct Bag* next;
     ChildBag* value;
 } Bag;
+
+
+Bag* BagConstructor()
+{
+    Bag* newBag = (Bag*)malloc(sizeof(Bag));
+    newBag->next = NULL;
+    newBag->value = NULL;
+}
 
 
 int BagAdd(Bag* bagStart, int index, int value)
@@ -40,12 +48,12 @@ int BagAdd(Bag* bagStart, int index, int value)
     return 1;
 }
 
-int BagGetChildren(Bag* bagRoot, int index)
+ChildBag* BagGetChildren(Bag* bagRoot, int index)
 {
     //TODO implement
 }
 
-int BagGetChild(Bag* bagRoot, int index, int childIntex)
+ChildBag* BagGetChild(Bag* bagRoot, int index, int childIntex)
 {
     //TODO implement
 }
