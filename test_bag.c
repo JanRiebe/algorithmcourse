@@ -39,5 +39,21 @@ int main()
     }
 
 
+    printf("Printing number of bags using iterate.\n");
+    BagIterate(&iter, root);
+    i=0;
+    while (BagIterate(&iter, NULL))
+    {
+        printf("%i", i++);
+        ChildBag* childIter = iter->next->value;
+        while (childIter)
+        {
+            printf(" - %i", childIter->value);
+            childIter = childIter->next;
+        }        
+        printf("\n");
+    }
+
+
     return 0;
 }

@@ -3,21 +3,21 @@ This is a simple bag that currently only supports adding.
 */
 #include <stdlib.h>
 
-typedef struct ChildBag
+typedef struct ChildBag //TODO rename edge
 {
     struct ChildBag* next;
     int value;
 } ChildBag;
 
 
-typedef struct Bag
+typedef struct Bag       //TODO rename vertex
 {
     struct Bag* next;
     ChildBag* value;
 } Bag;
 
 
-Bag* BagConstructor()
+Bag* BagConstructor()       //TODO rename graph constructor
 {
     Bag* newBag = (Bag*)malloc(sizeof(Bag));
     newBag->next = NULL;
@@ -48,12 +48,20 @@ int BagAdd(Bag* bagStart, int index, int value)
     return 1;
 }
 
-ChildBag* BagGetChildren(Bag* bagRoot, int index)
+//TODO test
+int BagIterate(Bag** index, Bag* root)
 {
-    //TODO implement
-}
+    static Bag* pointer;
 
-ChildBag* BagGetChild(Bag* bagRoot, int index, int childIntex)
-{
-    //TODO implement
+    if(root)
+        pointer = root;    
+    else
+        pointer = pointer->next;
+
+    if(!pointer)
+        return 0;
+
+    *index = pointer;
+
+    return 1;
 }
